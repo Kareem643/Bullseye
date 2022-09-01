@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+//this contains a lot of useful tools, such as motion conrols and a clipboard and orientation
 
 void main() {
-  runApp(
-    const MaterialApp(
+  runApp(BulleyeApp());
+}
+
+class BulleyeApp extends StatelessWidget {
+  const BulleyeApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+    //this sets the device orientation for both left and right
+    //
+
+    return const MaterialApp(
       title: 'Bullseye',
       home: GamePage(),
-    ),
-  );
+    );
+  }
 }
 
 class GamePage extends StatefulWidget {
