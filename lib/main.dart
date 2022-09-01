@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //this contains a lot of useful tools, such as motion conrols and a clipboard and orientation
+import 'prompt.dart';
 
 void main() {
   runApp(BulleyeApp());
@@ -16,7 +17,6 @@ class BulleyeApp extends StatelessWidget {
       DeviceOrientation.landscapeRight,
     ]);
     //this sets the device orientation for both left and right
-    //
 
     return const MaterialApp(
       title: 'Bullseye',
@@ -42,13 +42,7 @@ class _GamePageState extends State<GamePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Hello Bullseye',
-              style: TextStyle(
-                color: Colors.green,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            const Prompt(targetValue: 100),
             TextButton(
               onPressed: () {
                 _alertIsVisible = true;
