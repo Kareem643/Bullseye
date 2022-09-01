@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 //this contains a lot of useful tools, such as motion conrols and a clipboard and orientation
 import 'prompt.dart';
 import 'control.dart';
+import 'score.dart';
 
 void main() {
   runApp(BulleyeApp());
@@ -57,22 +58,9 @@ class _GamePageState extends State<GamePage> {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                TextButton(
-                  child: const Text('Start Over'),
-                  onPressed: () {},
-                ),
-                const Text('Score'),
-                const Text('99999'),
-                const Text('Round'),
-                const Text('999'),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text('Info'),
-                ),
-              ],
+            const Score(
+              totalScore: 0,
+              round: 1,
             ),
           ],
         ),
