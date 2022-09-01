@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //this contains a lot of useful tools, such as motion conrols and a clipboard and orientation
 import 'prompt.dart';
+import 'control.dart';
 
 void main() {
   runApp(BulleyeApp());
@@ -43,6 +44,7 @@ class _GamePageState extends State<GamePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Prompt(targetValue: 100),
+            const Control(),
             TextButton(
               onPressed: () {
                 _alertIsVisible = true;

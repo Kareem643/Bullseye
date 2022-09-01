@@ -18,7 +18,10 @@ class Prompt extends StatelessWidget {
           'PUT THE BULLSEYE AS CLOSE AS YOU CAN',
           style: LabelTextStyle.bodyText1(context),
         ),
-        Text('$targetValue'),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text('$targetValue'),
+        ),
         //the $ is used to access the value of the targetValue variable inside of the sting
       ],
     );
