@@ -4,9 +4,10 @@ import 'package:flutter/services.dart';
 import 'prompt.dart';
 import 'control.dart';
 import 'score.dart';
+import 'game_model.dart';
 
 void main() {
-  runApp(BulleyeApp());
+  runApp(const BulleyeApp());
 }
 
 class BulleyeApp extends StatelessWidget {
@@ -35,7 +36,15 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
-  var _alertIsVisible = false;
+  late GameModel _model;
+  // the late modifier indicate that we are not going to set the variable in the constructor
+  //but we will initialize itat some point before we use it
+
+  @override
+  void initState() {
+    super.initState();
+    _model = GameModel(50);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +54,9 @@ class _GamePageState extends State<GamePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Prompt(targetValue: 100),
-            const Control(),
+            Control(model: _model),
             TextButton(
               onPressed: () {
-                _alertIsVisible = true;
                 _showAlert(context);
               },
               child: const Text(
@@ -58,9 +66,9 @@ class _GamePageState extends State<GamePage> {
                 ),
               ),
             ),
-            const Score(
-              totalScore: 0,
-              round: 1,
+            Score(
+              totalScore: _model.totalScore,
+              round: _model.round,
             ),
           ],
         ),
@@ -73,8 +81,7 @@ class _GamePageState extends State<GamePage> {
       child: const Text('Awesome!'),
       onPressed: () {
         Navigator.of(context).pop();
-        _alertIsVisible = false;
-        print('Awesome pressed! $_alertIsVisible');
+        print('Awesome pressed!');
       },
     );
     showDialog(
