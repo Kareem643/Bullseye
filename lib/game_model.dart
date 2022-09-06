@@ -1,6 +1,4 @@
 class GameModel {
-  //constructor iinitializes the object
-
   GameModel(this.target,
       [this.current = sliderStart,
       this.totalScore = scoreStart,
